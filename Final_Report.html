@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Risk Prediction Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        h2 {
+            color: #555;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+
+        h3 {
+            color: #666;
+        }
+
+        img {
+            max-width: 700px;
+            display: block;
+            margin: 20px auto;
+            border: 1px solid #ddd;
+            padding: 5px;
+        }
+
+        .caption {
+            text-align: center;
+            font-style: italic;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-left: 3px solid #333;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <p style="text-align: center;">
+        <strong>Name:</strong> L. Guna<br>
+        <strong>Roll No:</strong> CS24B2043<br>
+        <strong>Course:</strong> Applied Data Science<br>
+        <strong>Project Title:</strong> Diabetes Risk Prediction Using Logistic Regression and SVM
+    </p>
+
+    <h1>Diabetes Risk Prediction Using Logistic Regression and SVM</h1>
+
+    <h2>Introduction</h2>
+    <p>This report presents an analysis and predictive modeling study performed on the Pima Indians Diabetes dataset.
+        The goal is to explore the dataset through descriptive analytics and build machine learning models that predict
+        diabetes outcome. The study demonstrates the use of two algorithms not covered in classroom instruction:
+        Logistic Regression and Support Vector Machine (SVM). The results help highlight factors influencing diabetes
+        risk and evaluate model effectiveness.</p>
+
+    <h2>Objectives</h2>
+    <p>The main objectives of this work are:</p>
+    <ol>
+        <li>To perform descriptive analytics on the Pima Indians Diabetes dataset and understand the relationships
+            between medical features and diabetes outcome.</li>
+        <li>To build and compare two binary classification models (Logistic Regression and SVM) that were not covered in
+            classroom discussions.</li>
+        <li>To evaluate the models using accuracy, precision, recall, F1-score, confusion matrix, and ROC-AUC, and
+            interpret the results.</li>
+    </ol>
+
+    <h2>Dataset Description</h2>
+    <p>The dataset contains 768 instances and 9 attributes. The target column "Outcome" is binary (0 = non-diabetic, 1 =
+        diabetic). The input features include:<br>
+        Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age.<br>
+        The dataset includes medical measurements often associated with metabolic health and diabetes risk.</p>
+
+    <h2>Folder Structure</h2>
+    <pre>
+diabetes_project/
+    main.py
+    Problem_Statement.txt
+    Final_Report.html
+    Final_Report.pdf
+    README.txt
+    requirements.txt
+    data/diabetes.csv
+    results/(all plot images)
+</pre>
+
+    <h2>Code Workflow Explanation</h2>
+    <p>The dataset is loaded and basic descriptive statistics are printed. Various exploratory plots are
+        generated to understand feature distributions, outliers, correlation, and class balance. All input features are
+        standardized using a simple scaling step, and the data is then split into training and test sets using a
+        standard 80:20 split.<br>
+        Two models are trained:<br>
+        Logistic Regression: a linear probability classification model based on sigmoid transformation and maximum
+        likelihood.<br>
+        Support Vector Machine: finds the optimal separating hyperplane maximizing margin between classes.</p>
+
+    <p>Both models are evaluated using accuracy, confusion matrix, classification report, and ROC-AUC. Additional
+        visualization plots help compare models and show feature relationships.</p>
+
+    <h2>Logistic Regression Explanation</h2>
+    <p>Logistic Regression is a binary classification algorithm that models the probability of an outcome using the
+        logistic (sigmoid) function. The model estimates coefficients for each input feature and outputs a probability
+        between 0 and 1. A threshold (usually 0.5) determines the final predicted class. It is interpretable and
+        effective when the relationship between features and output is approximately linear.</p>
+
+    <h2>Support Vector Machine Explanation</h2>
+    <p>SVM is a classification algorithm that identifies the best separating hyperplane to divide classes with the
+        maximum possible margin. By maximizing the distance between support vectors and the separating boundary, SVM
+        improves generalization. In this project, a linear kernel is used for simplicity. SVM focuses on the most
+        influential data points near the boundary.</p>
+
+    <h2>Performance Evaluation</h2>
+    <p>Standard evaluation metrics are computed including accuracy, precision, recall, and F1-score. ROC-AUC curves
+        visualize the ranking performance of both models. Confusion matrix heatmaps indicate correct vs incorrect
+        classifications. Comparing model results helps determine which model performs better on this dataset.</p>
+
+    <h2>Results Summary</h2>
+    <p>After training the models and evaluating them on the test set, the numerical values of accuracy, precision,
+        recall, F1-score and AUC are reported from the Python output. These values, along with the confusion matrices
+        and ROC curves, are used to compare Logistic Regression and SVM.<br>
+        In our run, Logistic Regression achieved an accuracy of 78.57% and SVM achieved an accuracy of 79.22%.</p>
+
+    <h2>Plots and Inferences</h2>
+
+    <h3>Exploratory Data Analysis</h3>
+
+    <img src="results/missing_values.png" alt="Missing Values">
+    <p class="caption">Missing values chart shows no null entries in the dataset. However, some measurements such as
+        blood pressure having a value of zero are likely to be invalid rather than true zeros, and they behave like
+        hidden missing values.</p>
+
+    <img src="results/dist_glucose.png" alt="Glucose Distribution">
+    <p class="caption">The glucose histogram shows right-skewed distribution indicating many high-glucose cases which
+        strongly relate to diabetes outcome.</p>
+
+    <img src="results/dist_bmi.png" alt="BMI Distribution">
+    <p class="caption">BMI distribution shows slight right skew with most values in normal to overweight range.</p>
+
+    <img src="results/dist_age.png" alt="Age Distribution">
+    <p class="caption">Age distribution shows younger population majority with decreasing frequency in older age groups.
+    </p>
+
+    <img src="results/dist_bp.png" alt="Blood Pressure Distribution">
+    <p class="caption">Blood pressure distribution appears roughly normal with some outliers at zero indicating missing
+        or invalid measurements.</p>
+
+    <img src="results/pairplot.png" alt="Pairplot">
+    <p class="caption">Pairplot shows feature relationships with Glucose and BMI showing clear separation between
+        outcome classes.</p>
+
+    <img src="results/outliers_box.png" alt="Outliers Boxplot">
+    <p class="caption">Boxplots identify outliers in Glucose, BloodPressure, BMI, and Age with several extreme values
+        present.</p>
+
+    <img src="results/scatter_glucose_bmi.png" alt="Glucose vs BMI Scatter">
+    <p class="caption">Scatter plot of Glucose vs BMI colored by outcome shows diabetic cases concentrated in higher
+        glucose and BMI regions.</p>
+
+    <img src="results/violin_bmi_outcome.png" alt="BMI Violin Plot">
+    <p class="caption">Violin plot shows BMI distribution is higher for diabetic patients compared to non-diabetic.</p>
+
+    <img src="results/count_preg.png" alt="Pregnancies Count">
+    <p class="caption">Countplot shows pregnancy count relationship with outcome indicating higher pregnancy count may
+        correlate with diabetes risk.</p>
+
+    <img src="results/class_count.png" alt="Class Count">
+    <p class="caption">Class count plot shows dataset imbalance with majority class being non-diabetic.</p>
+
+    <img src="results/corr_heatmap.png" alt="Correlation Heatmap">
+    <p class="caption">The correlation heatmap highlights Glucose and BMI as strongly related to diabetes.</p>
+
+    <h3>Machine Learning Preparation</h3>
+
+    <img src="results/coef_importance.png" alt="Feature Importance">
+    <p class="caption">Logistic Regression coefficients show Glucose has highest positive influence on diabetes
+        prediction.</p>
+
+    <img src="results/decision_boundary_svm.png" alt="SVM Decision Boundary">
+    <p class="caption">SVM decision boundary visualization using Glucose and BMI shows linear separation between
+        classes.</p>
+
+    <img src="results/corr_sorted.png" alt="Correlation Sorted">
+    <p class="caption">Sorted correlation bar chart shows Glucose has strongest positive correlation with outcome.</p>
+
+    <img src="results/grouped_mean.png" alt="Grouped Mean Features">
+    <p class="caption">Mean feature values grouped by class show diabetic patients have higher average values for most
+        features.</p>
+
+    <h3>Model Performance Visualization</h3>
+
+    <img src="results/conf_matrix_lr.png" alt="Confusion Matrix Logistic Regression">
+    <p class="caption">Confusion matrix for Logistic Regression shows good true negative rate but moderate false
+        negative rate.</p>
+
+    <img src="results/conf_matrix_svm.png" alt="Confusion Matrix SVM">
+    <p class="caption">Confusion matrix for SVM shows slightly better performance than Logistic Regression with fewer
+        false negatives.</p>
+
+    <img src="results/roc_compare.png" alt="ROC Comparison">
+    <p class="caption">ROC curves comparison shows both models perform similarly with SVM having slightly higher AUC.
+    </p>
+
+    <img src="results/accuracy_compare.png" alt="Accuracy Comparison">
+    <p class="caption">Accuracy comparison chart shows SVM achieves marginally higher accuracy than Logistic Regression.
+    </p>
+
+    <img src="results/prec_rec_f1_compare.png" alt="Precision Recall F1 Comparison">
+    <p class="caption">Precision-Recall-F1 score bar graphs show both models have similar precision but SVM has slightly
+        better recall.</p>
+
+    <h2>Conclusion</h2>
+    <p>Both Logistic Regression and SVM perform reasonably well for diabetes classification. Logistic Regression is
+        simpler and more interpretable, whereas SVM provides a maximum-margin boundary that sometimes yields higher
+        recall. Glucose and BMI were observed as major influencing features. This project demonstrates that basic
+        predictive models can assist in early diabetes risk assessment. Future work may explore class balancing
+        techniques or additional models.</p>
+
+    <p style="text-align: center; margin-top: 40px;"><strong>End of Report</strong></p>
+
+</body>
+
+</html>

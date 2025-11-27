@@ -1,0 +1,6 @@
+Project Title: Diabetes Risk Prediction Using Logistic Regression and SVM
+
+Problem Chosen:
+The objective of this project is to analyze the Pima Indians Diabetes dataset and build simple predictive machine learning models to classify whether a patient is likely to develop diabetes. The problem is relevant because early identification of diabetes risk can support medical decision-making and preventive treatment. The dataset contains diagnostic measurements, and the aim is to understand relationships between these features and diabetes outcome using descriptive analytics and predictive modeling.
+
+The project uses Logistic Regression and Support Vector Machine (SVM), which were not taught in classroom discussions, making them suitable choices for the academic requirement to apply new algorithms. The performance of both models is compared using accuracy, precision, recall, F1-score, confusion matrix, and ROC-AUC.
