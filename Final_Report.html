@@ -276,21 +276,11 @@ diabetes_project/
         better recall.</p>
 
     <h2>Conclusion</h2>
-    <p>This project explored diabetes prediction using two fundamental machine learning classifiers — Logistic
-        Regression and Support Vector Machine. Through exploratory data analysis, features such as glucose level, BMI,
-        and age were identified as key indicators for diabetes risk. Logistic Regression provided interpretable model
-        coefficients valuable for medical understanding, while SVM produced stronger classification boundaries and
-        reduced false negatives.</p>
+    <p>The experimental results demonstrate that both Logistic Regression and Support Vector Machine (SVM) provide comparable performance for diabetes prediction. Logistic Regression correctly classified 89 non-diabetic cases and 32 diabetic cases, while SVM correctly classified 90 non-diabetic cases and 32 diabetic cases. The number of false negatives (25) is identical for both models, but SVM produced fewer false positives (7 compared to 8 in Logistic Regression). In terms of overall accuracy, Logistic Regression achieved 78.57%, whereas SVM achieved a slightly higher accuracy of 79.22%.</p>
 
-    <p>Performance evaluation using confusion matrices, ROC-AUC, and precision-recall measures demonstrated that SVM
-        achieved slightly higher accuracy and better recall performance. This suggests that margin-based learning is
-        more effective for this dataset where patient groups overlap in feature space. However, Logistic Regression
-        remains preferable for medical reasoning and model transparency.</p>
+    <p>These results indicate that SVM offers marginally better prediction performance, particularly by reducing false positive errors. However, Logistic Regression remains advantageous due to its interpretability and ease of understanding feature contributions.</p>
 
-    <p>Overall, combining clinically interpretable models with strong predictive models can support early diabetes
-        screening and decision-making in healthcare. Future extensions could include hyperparameter tuning, class
-        balancing techniques (SMOTE), and experimenting with non-linear kernels or ensemble models to further improve
-        detection accuracy.</p>
+    <p>In summary, SVM is the better model when prediction accuracy and classification reliability are prioritized, while Logistic Regression is preferred when interpretability and clinical transparency are required.</p>
 
     <p style="text-align: center; margin-top: 40px;"><strong>End of Report</strong></p>
 
