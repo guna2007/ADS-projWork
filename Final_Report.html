@@ -101,29 +101,80 @@ diabetes_project/
 </pre>
 
     <h2>Code Workflow Explanation</h2>
-    <p>The dataset is loaded and basic descriptive statistics are printed. Various exploratory plots are
-        generated to understand feature distributions, outliers, correlation, and class balance. All input features are
-        standardized using a simple scaling step, and the data is then split into training and test sets using a
-        standard 80:20 split.<br>
-        Two models are trained:<br>
-        Logistic Regression: a linear probability classification model based on sigmoid transformation and maximum
-        likelihood.<br>
-        Support Vector Machine: finds the optimal separating hyperplane maximizing margin between classes.</p>
+    <p>The workflow of the project begins with loading the Pima Indians Diabetes dataset into a pandas DataFrame.
+        Initial inspection of the data is carried out using descriptive statistics and structural summaries to
+        understand the range and distribution of values in each feature. Various exploratory plots are then generated to
+        identify key patterns such as feature distribution, class imbalance, outliers, and correlations between medical
+        parameters.</p>
 
-    <p>Both models are evaluated using accuracy, confusion matrix, classification report, and ROC-AUC. Additional
-        visualization plots help compare models and show feature relationships.</p>
+    <p>Before applying machine learning models, all input features are standardized using StandardScaler, since Logistic
+        Regression and SVM are sensitive to differences in feature scale. Standardization ensures that all features
+        contribute proportionally during model training. After preprocessing, the dataset is split into training and
+        test sets using an 80:20 split, allowing accurate evaluation of the model on unseen data.</p>
+
+    <p>Two supervised classification models are developed:</p>
+
+    <p>Logistic Regression – a linear probability-based classifier that learns a set of weights for each feature by
+        applying Maximum Likelihood Estimation.</p>
+
+    <p>Support Vector Machine (SVM) – a margin-based classifier that identifies the optimal separating hyperplane to
+        distinguish diabetic vs. non-diabetic patients.</p>
+
+    <p>Both models are trained on the training subset and then evaluated on the test subset. For evaluation, standard
+        performance metrics such as accuracy, precision, recall, F1-score, and confusion matrix are calculated. ROC-AUC
+        curves are plotted to assess the ranking and discrimination ability of each model. In addition to numeric
+        metrics, graphical comparisons such as ROC curves, accuracy comparison bars, and confusion matrix heatmaps
+        provide better insight into the strengths and limitations of each model.</p>
+
+    <p>This workflow ensures a structured pipeline from raw data exploration to predictive modeling and performance
+        assessment, supporting meaningful conclusions about diabetes risk detection.</p>
 
     <h2>Logistic Regression Explanation</h2>
-    <p>Logistic Regression is a binary classification algorithm that models the probability of an outcome using the
-        logistic (sigmoid) function. The model estimates coefficients for each input feature and outputs a probability
-        between 0 and 1. A threshold (usually 0.5) determines the final predicted class. It is interpretable and
-        effective when the relationship between features and output is approximately linear.</p>
+    <p>Logistic Regression is a statistical learning method used for binary classification problems such as predicting
+        whether a patient is diabetic or not. It models the relationship between input features and the probability of
+        class membership. The model forms a linear combination of the input features:</p>
+
+    <p>z = w₀ + w₁x₁ + w₂x₂ + ... + wₙxₙ</p>
+
+    <p>Since the raw output z can take any real value, it is transformed into a probability using the logistic sigmoid
+        function:</p>
+
+    <p>σ(z) = 1 / (1 + e⁻ᶻ)</p>
+
+    <p>The model parameters w are estimated by minimizing the Binary Cross-Entropy loss, which measures the difference
+        between predicted probabilities and actual labels. The optimization uses gradient descent to iteratively update
+        weights in the direction that reduces loss. A classification threshold (commonly 0.5) converts the predicted
+        probability into class labels.</p>
+
+    <p>One major advantage of logistic regression is interpretability: the coefficients indicate how strongly each
+        medical feature influences diabetes risk. For example, in our model, glucose has the highest coefficient,
+        meaning an increase in glucose level significantly increases the probability of diabetes. This transparency
+        makes Logistic Regression well-suited for healthcare, where explanatory support is crucial.</p>
 
     <h2>Support Vector Machine Explanation</h2>
-    <p>SVM is a classification algorithm that identifies the best separating hyperplane to divide classes with the
-        maximum possible margin. By maximizing the distance between support vectors and the separating boundary, SVM
-        improves generalization. In this project, a linear kernel is used for simplicity. SVM focuses on the most
-        influential data points near the boundary.</p>
+    <p>Support Vector Machine (SVM) is a margin-based classification algorithm that aims to find the optimal separating
+        boundary between classes. Instead of focusing on all training samples, SVM concentrates on the most critical
+        points near the decision boundary, called support vectors. The objective is to maximize the margin — the
+        distance between support vectors and the separating hyperplane. A wider margin generally improves generalization
+        to unseen data.</p>
+
+    <p>The decision function follows the linear form:</p>
+
+    <p>f(x) = wᵀx + b</p>
+
+    <p>Training an SVM involves solving an optimization problem that minimizes the hinge loss:</p>
+
+    <p>Loss = Σ max(0, 1 − yᵢ(wᵀxᵢ + b))</p>
+
+    <p>while simultaneously minimizing the magnitude of the weight vector ||w||. The balance between correct
+        classification and margin control enhances robustness against noisy or overlapping data. In this project, a
+        linear kernel is used because it is computationally efficient and matches the linear separability seen in our 2D
+        visualization (Glucose vs BMI).</p>
+
+    <p>SVM typically performs well on medium-sized medical datasets where avoiding false negatives is important. In
+        predictive diagnosis, a false negative means predicting "healthy" for a diabetic patient — a critical risk. Our
+        results show that SVM produced fewer false negatives than Logistic Regression, justifying its practical
+        advantage.</p>
 
     <h2>Performance Evaluation</h2>
     <p>Standard evaluation metrics are computed including accuracy, precision, recall, and F1-score. ROC-AUC curves
@@ -225,15 +276,21 @@ diabetes_project/
         better recall.</p>
 
     <h2>Conclusion</h2>
-    <p>In this study, we used both Logistic Regression and Support Vector Machine (SVM) to classify medical data.
-        Logistic Regression was chosen because it produces interpretable feature coefficients, which allows medical
-        experts to understand how individual parameters influence the diagnosis. Such transparency is important in
-        healthcare, where decision justification matters as much as prediction. On the other hand, SVM was selected for
-        its ability to separate complex, non-linear decision boundaries and deliver higher predictive accuracy on real
-        medical datasets. While Logistic Regression supports clinical interpretability, SVM provides stronger
-        classification performance, giving us the advantages of both explainability and accuracy in disease prediction.
+    <p>This project explored diabetes prediction using two fundamental machine learning classifiers — Logistic
+        Regression and Support Vector Machine. Through exploratory data analysis, features such as glucose level, BMI,
+        and age were identified as key indicators for diabetes risk. Logistic Regression provided interpretable model
+        coefficients valuable for medical understanding, while SVM produced stronger classification boundaries and
+        reduced false negatives.</p>
 
-    </p>
+    <p>Performance evaluation using confusion matrices, ROC-AUC, and precision-recall measures demonstrated that SVM
+        achieved slightly higher accuracy and better recall performance. This suggests that margin-based learning is
+        more effective for this dataset where patient groups overlap in feature space. However, Logistic Regression
+        remains preferable for medical reasoning and model transparency.</p>
+
+    <p>Overall, combining clinically interpretable models with strong predictive models can support early diabetes
+        screening and decision-making in healthcare. Future extensions could include hyperparameter tuning, class
+        balancing techniques (SMOTE), and experimenting with non-linear kernels or ensemble models to further improve
+        detection accuracy.</p>
 
     <p style="text-align: center; margin-top: 40px;"><strong>End of Report</strong></p>
 
