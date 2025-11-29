@@ -140,14 +140,14 @@ diabetes_project/
 
     <h3>Exploratory Data Analysis</h3>
 
+    <img src="results/dist_glucose.png" alt="Glucose Distribution">
+    <p class="caption">The glucose histogram shows right-skewed distribution indicating many high-glucose cases which
+        strongly relate to diabetes outcome.</p>
+
     <img src="results/missing_values.png" alt="Missing Values">
     <p class="caption">Missing values chart shows no null entries in the dataset. However, some measurements such as
         blood pressure having a value of zero are likely to be invalid rather than true zeros, and they behave like
         hidden missing values.</p>
-
-    <img src="results/dist_glucose.png" alt="Glucose Distribution">
-    <p class="caption">The glucose histogram shows right-skewed distribution indicating many high-glucose cases which
-        strongly relate to diabetes outcome.</p>
 
     <img src="results/dist_bmi.png" alt="BMI Distribution">
     <p class="caption">BMI distribution shows slight right skew with most values in normal to overweight range.</p>
@@ -225,7 +225,13 @@ diabetes_project/
         better recall.</p>
 
     <h2>Conclusion</h2>
-    <p>In this study, we used both Logistic Regression and Support Vector Machine (SVM) to classify medical data. Logistic Regression was chosen because it produces interpretable feature coefficients, which allows medical experts to understand how individual parameters influence the diagnosis. Such transparency is important in healthcare, where decision justification matters as much as prediction. On the other hand, SVM was selected for its ability to separate complex, non-linear decision boundaries and deliver higher predictive accuracy on real medical datasets. While Logistic Regression supports clinical interpretability, SVM provides stronger classification performance, giving us the advantages of both explainability and accuracy in disease prediction.
+    <p>In this study, we used both Logistic Regression and Support Vector Machine (SVM) to classify medical data.
+        Logistic Regression was chosen because it produces interpretable feature coefficients, which allows medical
+        experts to understand how individual parameters influence the diagnosis. Such transparency is important in
+        healthcare, where decision justification matters as much as prediction. On the other hand, SVM was selected for
+        its ability to separate complex, non-linear decision boundaries and deliver higher predictive accuracy on real
+        medical datasets. While Logistic Regression supports clinical interpretability, SVM provides stronger
+        classification performance, giving us the advantages of both explainability and accuracy in disease prediction.
 
     </p>
 
